@@ -1,0 +1,297 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3F515C0D-C87B-4ACF-94B4-8E7363FF7871}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>QuanLyRapPhim_Final</RootNamespace>
+    <AssemblyName>QuanLyRapPhim_Final</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BSLayer\BLChucVu.cs" />
+    <Compile Include="BSLayer\BLNhanVien.cs" />
+    <Compile Include="BSLayer\BLSuatChieu.cs" />
+    <Compile Include="DBLayer\DBMain.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuanLyRapPhimDataSet_CHUCVU.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QuanLyRapPhimDataSet_CHUCVU.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="QuanLyRapPhimDataSet_DATVE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QuanLyRapPhimDataSet_DATVE.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="QuanLyRapPhimDataSet_KHACHHANG.cs">
+      <DependentUpon>QuanLyRapPhimDataSet_KHACHHANG.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="QuanLyRapPhimDataSet_KHACHHANG.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QuanLyRapPhimDataSet_KHACHHANG.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="QuanLyRapPhimDataSet_MaCV.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QuanLyRapPhimDataSet_MaCV.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="QuanLyRapPhimDataSet_NHANVIEN.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QuanLyRapPhimDataSet_NHANVIEN.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="QuanLyRapPhimDataSet_PHIM.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QuanLyRapPhimDataSet_PHIM.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="BSLayer\BLDatVe.cs" />
+    <Compile Include="BSLayer\BLKhachHang.cs" />
+    <Compile Include="BSLayer\BLPhim.cs" />
+    <Compile Include="BSLayer\BLRap.cs" />
+    <Compile Include="QuanLyRapPhimDataSet_RAP.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QuanLyRapPhimDataSet_RAP.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="QuanLyRapPhimDataSet_SUATCHIEUPHIM.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QuanLyRapPhimDataSet_SUATCHIEUPHIM.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="renderSeat\createObject.cs" />
+    <Compile Include="renderSeat\render.cs" />
+    <Compile Include="User Controls\ChucVuUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Controls\ChucVuUC.Designer.cs">
+      <DependentUpon>ChucVuUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Controls\DatVeUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Controls\DatVeUC.Designer.cs">
+      <DependentUpon>DatVeUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Controls\PhimUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Controls\PhimUC.Designer.cs">
+      <DependentUpon>PhimUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Controls\QuanLyKhachHangUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Controls\QuanLyKhachHangUC.Designer.cs">
+      <DependentUpon>QuanLyKhachHangUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Controls\QuanLyNhanVienUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Controls\QuanLyNhanVienUC.Designer.cs">
+      <DependentUpon>QuanLyNhanVienUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Controls\QuanLyRapUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Controls\QuanLyRapUC.Designer.cs">
+      <DependentUpon>QuanLyRapUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Controls\QuanLySuatChieuUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Controls\QuanLySuatChieuUC.Designer.cs">
+      <DependentUpon>QuanLySuatChieuUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Controls\WelcomeUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Controls\WelcomeUC.Designer.cs">
+      <DependentUpon>WelcomeUC.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="User Controls\ChucVuUC.resx">
+      <DependentUpon>ChucVuUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Controls\DatVeUC.resx">
+      <DependentUpon>DatVeUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Controls\PhimUC.resx">
+      <DependentUpon>PhimUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Controls\QuanLyKhachHangUC.resx">
+      <DependentUpon>QuanLyKhachHangUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Controls\QuanLyNhanVienUC.resx">
+      <DependentUpon>QuanLyNhanVienUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Controls\QuanLyRapUC.resx">
+      <DependentUpon>QuanLyRapUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Controls\QuanLySuatChieuUC.resx">
+      <DependentUpon>QuanLySuatChieuUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Controls\WelcomeUC.resx">
+      <DependentUpon>WelcomeUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="QuanLyRapPhimDataSet_CHUCVU.xsc">
+      <DependentUpon>QuanLyRapPhimDataSet_CHUCVU.xsd</DependentUpon>
+    </None>
+    <None Include="QuanLyRapPhimDataSet_CHUCVU.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QuanLyRapPhimDataSet_CHUCVU.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="QuanLyRapPhimDataSet_CHUCVU.xss">
+      <DependentUpon>QuanLyRapPhimDataSet_CHUCVU.xsd</DependentUpon>
+    </None>
+    <None Include="QuanLyRapPhimDataSet_DATVE.xsc">
+      <DependentUpon>QuanLyRapPhimDataSet_DATVE.xsd</DependentUpon>
+    </None>
+    <None Include="QuanLyRapPhimDataSet_DATVE.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QuanLyRapPhimDataSet_DATVE.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="QuanLyRapPhimDataSet_DATVE.xss">
+      <DependentUpon>QuanLyRapPhimDataSet_DATVE.xsd</DependentUpon>
+    </None>
+    <None Include="QuanLyRapPhimDataSet_KHACHHANG.xsc">
+      <DependentUpon>QuanLyRapPhimDataSet_KHACHHANG.xsd</DependentUpon>
+    </None>
+    <None Include="QuanLyRapPhimDataSet_KHACHHANG.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QuanLyRapPhimDataSet_KHACHHANG.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="QuanLyRapPhimDataSet_KHACHHANG.xss">
+      <DependentUpon>QuanLyRapPhimDataSet_KHACHHANG.xsd</DependentUpon>
+    </None>
+    <None Include="QuanLyRapPhimDataSet_MaCV.xsc">
+      <DependentUpon>QuanLyRapPhimDataSet_MaCV.xsd</DependentUpon>
+    </None>
+    <None Include="QuanLyRapPhimDataSet_MaCV.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QuanLyRapPhimDataSet_MaCV.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="QuanLyRapPhimDataSet_MaCV.xss">
+      <DependentUpon>QuanLyRapPhimDataSet_MaCV.xsd</DependentUpon>
+    </None>
+    <None Include="QuanLyRapPhimDataSet_NHANVIEN.xsc">
+      <DependentUpon>QuanLyRapPhimDataSet_NHANVIEN.xsd</DependentUpon>
+    </None>
+    <None Include="QuanLyRapPhimDataSet_NHANVIEN.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QuanLyRapPhimDataSet_NHANVIEN.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="QuanLyRapPhimDataSet_NHANVIEN.xss">
+      <DependentUpon>QuanLyRapPhimDataSet_NHANVIEN.xsd</DependentUpon>
+    </None>
+    <None Include="QuanLyRapPhimDataSet_PHIM.xsc">
+      <DependentUpon>QuanLyRapPhimDataSet_PHIM.xsd</DependentUpon>
+    </None>
+    <None Include="QuanLyRapPhimDataSet_PHIM.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QuanLyRapPhimDataSet_PHIM.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="QuanLyRapPhimDataSet_PHIM.xss">
+      <DependentUpon>QuanLyRapPhimDataSet_PHIM.xsd</DependentUpon>
+    </None>
+    <None Include="QuanLyRapPhimDataSet_RAP.xsc">
+      <DependentUpon>QuanLyRapPhimDataSet_RAP.xsd</DependentUpon>
+    </None>
+    <None Include="QuanLyRapPhimDataSet_RAP.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QuanLyRapPhimDataSet_RAP.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="QuanLyRapPhimDataSet_RAP.xss">
+      <DependentUpon>QuanLyRapPhimDataSet_RAP.xsd</DependentUpon>
+    </None>
+    <None Include="QuanLyRapPhimDataSet_SUATCHIEUPHIM.xsc">
+      <DependentUpon>QuanLyRapPhimDataSet_SUATCHIEUPHIM.xsd</DependentUpon>
+    </None>
+    <None Include="QuanLyRapPhimDataSet_SUATCHIEUPHIM.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QuanLyRapPhimDataSet_SUATCHIEUPHIM.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="QuanLyRapPhimDataSet_SUATCHIEUPHIM.xss">
+      <DependentUpon>QuanLyRapPhimDataSet_SUATCHIEUPHIM.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
