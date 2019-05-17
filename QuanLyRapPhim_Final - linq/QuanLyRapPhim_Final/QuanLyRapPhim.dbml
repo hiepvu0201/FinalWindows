@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QuanLyRapPhim" Class="QuanLyRapPhimDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.\SQLEXPRESS;Initial Catalog=QuanLyRapPhim;Integrated Security=True" SettingsObjectName="QuanLyRapPhim_Final.Properties.Settings" SettingsPropertyName="QuanLyRapPhimConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.ChucVu" Member="ChucVus">
+    <Type Name="ChucVu">
+      <Column Name="MaCV" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ChucVu" Member="ChucVu1" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Luong" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="ChucVu_NhanVien" Member="NhanViens" ThisKey="MaCV" OtherKey="MaCV" Type="NhanVien" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DatVe" Member="DatVes">
+    <Type Name="DatVe">
+      <Column Name="MaPhim" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SuatChieu" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="MaNV" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaKH" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaRap" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Day" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="So" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="KhachHang_DatVe" Member="KhachHang" ThisKey="MaKH" OtherKey="MaKH" Type="KhachHang" IsForeignKey="true" />
+      <Association Name="NhanVien_DatVe" Member="NhanVien" ThisKey="MaNV" OtherKey="MaNV" Type="NhanVien" IsForeignKey="true" />
+      <Association Name="Phim_DatVe" Member="Phim" ThisKey="MaPhim" OtherKey="MaPhim" Type="Phim" IsForeignKey="true" />
+      <Association Name="Rap_DatVe" Member="Rap" ThisKey="MaRap" OtherKey="MaRap" Type="Rap" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.KhachHang" Member="KhachHangs">
+    <Type Name="KhachHang">
+      <Column Name="MaKH" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="HovaLotKH" Type="System.String" DbType="NChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TenKH" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Association Name="KhachHang_DatVe" Member="DatVes" ThisKey="MaKH" OtherKey="MaKH" Type="DatVe" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NhanVien" Member="NhanViens">
+    <Type Name="NhanVien">
+      <Column Name="HovaLotNV" Type="System.String" DbType="NChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TenNV" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="MaNV" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaCV" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="GioNghi" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TongGioNghi" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="NhanVien_DatVe" Member="DatVes" ThisKey="MaNV" OtherKey="MaNV" Type="DatVe" />
+      <Association Name="ChucVu_NhanVien" Member="ChucVu" ThisKey="MaCV" OtherKey="MaCV" Type="ChucVu" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Phim" Member="Phims">
+    <Type Name="Phim">
+      <Column Name="TenPhim" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="MaPhim" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="GiaVe" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Poster" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Phim_DatVe" Member="DatVes" ThisKey="MaPhim" OtherKey="MaPhim" Type="DatVe" />
+      <Association Name="Phim_SuatChieuPhim" Member="SuatChieuPhims" ThisKey="MaPhim" OtherKey="MaPhim" Type="SuatChieuPhim" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Rap" Member="Raps">
+    <Type Name="Rap">
+      <Column Name="MaRap" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SoDayGhe" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SoLuongGhe" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LoaiPhim" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Rap_DatVe" Member="DatVes" ThisKey="MaRap" OtherKey="MaRap" Type="DatVe" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SuatChieuPhim" Member="SuatChieuPhims">
+    <Type Name="SuatChieuPhim">
+      <Column Name="MaPhim" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SuatChieu" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="MaRap" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Phim_SuatChieuPhim" Member="Phim" ThisKey="MaPhim" OtherKey="MaPhim" Type="Phim" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
