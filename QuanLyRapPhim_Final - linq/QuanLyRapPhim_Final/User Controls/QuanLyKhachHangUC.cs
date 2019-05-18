@@ -117,7 +117,7 @@ namespace QuanLyRapPhim_Final.User_Controls
             else
             {
                 BLKhachHang blKH = new BLKhachHang();
-                blKH.CapNhatKhachHang(this.txtMaKH.Text, this.txtTenKH.Text, ref err);
+                blKH.CapNhatKhachHang(this.txtMaKH.Text, this.txtTenKH.Text,this.txtHovalotKH.Text, ref err);
                 LoadData();
                 MessageBox.Show("Đã sửa xong!");
             }

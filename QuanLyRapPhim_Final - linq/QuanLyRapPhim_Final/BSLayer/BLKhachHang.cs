@@ -57,7 +57,7 @@ namespace QuanLyRapPhim_Final.BSLayer
             return true;
         }
         public bool CapNhatKhachHang(string MaKH,
-            string TenKH, ref string err)
+            string TenKH, string HovaTenLotKH,ref string err)
         {
             try
             {
@@ -66,6 +66,7 @@ namespace QuanLyRapPhim_Final.BSLayer
                 if (khQuery != null)
                 {
                     khQuery.TenKH = TenKH;
+                    khQuery.HovaLotKH = HovaTenLotKH;
                     qlKH.SubmitChanges();
                 }
             }

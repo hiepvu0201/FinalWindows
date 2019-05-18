@@ -34,10 +34,9 @@ namespace QuanLyRapPhim_Final.User_Controls
         {
             try
             {
-                
-                dgv_PHIM.DataSource = dbPhim.LayPhim();
-                dgv_PHIM.AutoResizeColumns();
 
+                this.phimTableAdapter.Fill(this.quanLyRapPhimDataSet_PHIM.Phim);
+                dgv_PHIM.AutoResizeColumns();
                 txtMaPhim.ResetText();
                 txtTenPhim.ResetText();
                 txtGiaVe.ResetText();
@@ -117,7 +116,7 @@ namespace QuanLyRapPhim_Final.User_Controls
 
                     blPhim.ThemPhim(this.txtTenPhim.Text.Trim(), this.txtMaPhim.Text.Trim(),
                         int.Parse(txtGiaVe.Text.ToString()), pic, ref err);
-                    LoadData();
+         
                     MessageBox.Show("Đã thêm xong!");
                 }
                 catch (SqlException)
@@ -131,8 +130,8 @@ namespace QuanLyRapPhim_Final.User_Controls
                 try
                 {
                     BLPhim blPhim = new BLPhim();
-                    blPhim.CapNhatPhim(this.txtMaPhim.Text.Trim(), this.txtTenPhim.Text.Trim(),Int32.Parse(this.txtGiaVe.Text), pic, ref err);
-                    LoadData();
+                    blPhim.CapNhatPhim(this.txtMaPhim.Text.Trim(), this.txtTenPhim.Text.Trim(),int.Parse(this.txtGiaVe.Text.ToString()), pic, ref err);
+                    
                     MessageBox.Show("Đã sửa xong!");
                 }
                 catch (SqlException)
@@ -140,6 +139,7 @@ namespace QuanLyRapPhim_Final.User_Controls
                     MessageBox.Show("Không sửa được. Lỗi rồi!");
                 }
             }
+            LoadData();
         }
 
         private void btnDelFilm_Click(object sender, EventArgs e)
@@ -155,7 +155,6 @@ namespace QuanLyRapPhim_Final.User_Controls
                 try
                 {
                     dbPhim.XoaPhim(ref err, strPhim);
-                    LoadData();
                     MessageBox.Show("Đã xóa!");
                 }
                 catch (SqlException)
@@ -164,6 +163,8 @@ namespace QuanLyRapPhim_Final.User_Controls
                 }
 
             }
+            LoadData();
+          
         }
 
         private void btnBrowse_Click(object sender, EventArgs e)
