@@ -14,7 +14,6 @@ namespace QuanLyRapPhim_Final.BSLayer
 
         public System.Data.Linq.Table<ChucVu> LayChucVu()
         {
-            DataSet ds = new DataSet();
             QuanLyRapPhimDataContext qlCV = new QuanLyRapPhimDataContext();
             return qlCV.ChucVus;
         }
