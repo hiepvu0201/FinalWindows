@@ -116,7 +116,7 @@ namespace QuanLyRapPhim_Final.User_Controls
                     BLPhim blPhim = new BLPhim();
 
                     blPhim.ThemPhim(this.txtTenPhim.Text.Trim(), this.txtMaPhim.Text.Trim(),
-                        int.Parse(txtGiaVe.Text.ToString()), pic, ref err);
+                        int.Parse(txtGiaVe.Text.ToString()), linkPic, ref err);
                     LoadData();
                     MessageBox.Show("Đã thêm xong!");
                 }
@@ -131,7 +131,7 @@ namespace QuanLyRapPhim_Final.User_Controls
                 try
                 {
                     BLPhim blPhim = new BLPhim();
-                    blPhim.CapNhatPhim(this.txtMaPhim.Text.Trim(), this.txtTenPhim.Text.Trim(),Int32.Parse(this.txtGiaVe.Text), pic, ref err);
+                    blPhim.CapNhatPhim(this.txtMaPhim.Text.Trim(), this.txtTenPhim.Text.Trim(),Int32.Parse(this.txtGiaVe.Text), linkPic, ref err);
                     LoadData();
                     MessageBox.Show("Đã sửa xong!");
                 }

@@ -91,10 +91,5 @@ namespace QuanLyRapPhim_Final
             quanLySuatChieuUC1.BringToFront();
             lblHeader.Text = "Chức vụ nhân viên";
         }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            btnWelcome_Click(null, null);
-        }
     }
 }

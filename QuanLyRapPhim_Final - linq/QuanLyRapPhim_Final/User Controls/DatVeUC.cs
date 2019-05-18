@@ -15,6 +15,14 @@ namespace QuanLyRapPhim_Final.User_Controls
 {
     public partial class DatVeUC : UserControl
     {
+        QuanLyRapPhimDataContext db = new QuanLyRapPhimDataContext();
+        DataTable dtRap = null;
+        DataTable dtDatVe = null;
+        DataTable dtPhim = null;
+        DataTable dtSuatChieu = null;
+        DataTable dtNhanVien = null;
+        DataTable dtKH = null;
+
         BLNhanVien dbNhanVien = new BLNhanVien();
         BLSuatChieu dbSuatChieu = new BLSuatChieu();
         BLPhim dbPhim = new BLPhim();
@@ -57,19 +65,22 @@ namespace QuanLyRapPhim_Final.User_Controls
             comboBox2.DisplayMember = "TenPhim";
             comboBox2.ValueMember = "TenPhim";
         }
-        private void setRaptxt()
+        private void setRaptxt(DataTable dt)
         {
-            var dtPhim = dbPhim.LayPhim().ToList();
-            var dtsuatchieu = dbSuatChieu.LaySuatChieu().ToList();
-            for (int i = 0; i < dtPhim.Count; i++)
+
+            dtSuatChieu = new DataTable();
+            dtSuatChieu.Clear();
+            DataSet dsSuatChieu = dbSuatChieu.LaySuatChieu();
+            dtSuatChieu = db.SuatChieuPhims.Select(p => p);
+            for (int i = 0; i < dtPhim.Rows.Count; i++)
             {
-                if (comboBox2.Text == dtPhim[i].TenPhim)
+                if (comboBox2.Text == dt.Rows[i].ItemArray[0].ToString())
                 {
-                    for (int j = 0; j < dtsuatchieu.Count; j++)
+                    for (int j = 0; j < dtSuatChieu.Rows.Count; j++)
                     {
-                        if (dtPhim[i].MaPhim == dtsuatchieu[j].MaPhim && dtsuatchieu[j].SuatChieu == SuatChieucb.Text)
+                        if (dt.Rows[i].ItemArray[1].ToString() == dtSuatChieu.Rows[j].ItemArray[0].ToString() && dtSuatChieu.Rows[j].ItemArray[1].ToString() == SuatChieucb.Text)
                         {
-                            globalRap = dtsuatchieu[j].MaRap.ToString();
+                            globalRap = dtSuatChieu.Rows[j].ItemArray[2].ToString();
                             raptxt.Enabled = true;
                             raptxt.Text = globalRap;
                             raptxt.Enabled = false;
@@ -90,26 +101,59 @@ namespace QuanLyRapPhim_Final.User_Controls
         private void getBookedSeat()
         {
             if (SuatChieucb.ValueMember == "") return;
+
+            dtDatVe = new DataTable();
+            dtDatVe.Clear();
+            DataSet ds = dbDatVe.findBookedSeat(globalRap, SuatChieucb.Text);
+            dtDatVe = ds.Tables[0];
             bookedSeatAlpha = new List<string>();
             bookedSeatNum = new List<string>();
-            dbDatVe.findBookedSeat(globalRap, SuatChieucb.Text, ref bookedSeatAlpha, ref bookedSeatNum);
+            if (dtDatVe.Rows.Count != 0)
+            {
+                for (int i = 0; i < dtDatVe.Rows.Count; i++)   //2 cột
+                {
 
+                    bookedSeatAlpha.Add(dtDatVe.Rows[i].ItemArray[0].ToString());
+                    bookedSeatNum.Add(dtDatVe.Rows[i].ItemArray[1].ToString());
+
+                }
+            }
         }
 
         private void comboBox2_SelectedIndexChanged_1(object sender, EventArgs e)
         {
 
-            setRaptxt();
+            dtPhim = new DataTable();
+            dtPhim.Clear();
+            DataSet dsPhim = dbPhim.LayPhim();
+            dtPhim = dsPhim.Tables[0];
+            setRaptxt(dtPhim);
             //gọi hàm set cb suất chiếu
             SuatChieucb.Enabled = true;
             if (comboBox2.ValueMember != "")
             {
-                setCbSuatChieu();
+                setCbSuatChieu(dtPhim);
             }
 
             //render chỗ khi change index
 
 
+        }
+        private string getHour()
+        {
+
+            dtDatVe = new DataTable();
+            dtDatVe.Clear();
+            DataSet dsDatVe = dbDatVe.findHour(SuatChieucb.SelectedItem.ToString());
+            dtDatVe = dsDatVe.Tables[0];
+            for (int i = 0; i < dtDatVe.Rows.Count; i++)
+            {
+                if (comboBox2.Text == dtDatVe.Rows[i].ItemArray[1].ToString())
+                {
+                    return dtDatVe.Rows[i].ItemArray[0].ToString();
+                }
+            }
+            return "";
         }
 
         private void SuatChieucb_SelectedIndexChanged(object sender, EventArgs e)
@@ -122,42 +166,48 @@ namespace QuanLyRapPhim_Final.User_Controls
 
             seatPanel.Visible = true;
             render seatLoader = new render();
-            //dtRap = new DataTable();
-            //dtRap.Clear();
-            //dtPhim = new DataTable();
-            var dtPhim = dbPhim.LayPhim().ToList();
-            setRaptxt();
+            dtRap = new DataTable();
+            dtRap.Clear();
+            dtPhim = new DataTable();
+            DataSet dsPhim = dbPhim.LayPhim();
+            dtPhim = dsPhim.Tables[0];
+            setRaptxt(dtPhim);
             if (globalRap != null)
             {
-                var demRap = dbRap.findrap(globalRap);
+                DataSet ds = dbRap.findRap(globalRap);
+                dtRap = ds.Tables[0];
 
-                if (demRap != 0)
+                if (dtRap.Rows.Count != 0)
                 {
-
-                    dbRap.findsodayghe(globalRap, ref Program.hangGhe);
-                    dbRap.findSoLuongGhe(globalRap, ref Program.soGhe);
+                    ds = dbRap.findSoDayGhe(globalRap);
+                    dtRap = ds.Tables[0];
+                    Program.hangGhe = Convert.ToInt32(dtRap.Rows[0].ItemArray[0].ToString());
+                    ds = dbRap.findSoLuongGhe(globalRap);
+                    dtRap = ds.Tables[0];
+                    Program.soGhe = Convert.ToInt32(dtRap.Rows[0].ItemArray[0].ToString());
                     seatLoader.removeSeat(ref seatPanel);
                     seatPanel.Refresh();
+                    //time = getHour();
                     getBookedSeat();
                     seatLoader.renderSeat(ref seatPanel, bookedSeatAlpha, bookedSeatNum);
                     setBtnEven(seatLoader.btns);
                 }
             }
         }
-        private void setCbSuatChieu()
+        private void setCbSuatChieu(DataTable dtPhim)
         {
-            var dtPhim = dbPhim.LayPhim().ToList();
             if (comboBox2.ValueMember.ToString() == "") return;
+            dtSuatChieu = new DataTable();
+            dtSuatChieu.Clear();
 
-
-            for (int i = 0; i < dtPhim.Count; i++)
+            for (int i = 0; i < dtPhim.Rows.Count; i++)
             {
-                if (comboBox2.Text == dtPhim[i].TenPhim)
+                if (comboBox2.Text == dtPhim.Rows[i].ItemArray[0].ToString())
                 {
-                    currentMaPhim = dtPhim[i].MaPhim;
+                    currentMaPhim = dtPhim.Rows[i].ItemArray[1].ToString();
                 }
             }
-
+            
             SuatChieucb.DataSource = dbSuatChieu.LaySuatChieu();
             SuatChieucb.DisplayMember = "SuatChieu";
             SuatChieucb.ValueMember = "SuatChieu";
@@ -170,7 +220,7 @@ namespace QuanLyRapPhim_Final.User_Controls
         }
         private void setNhanViencb()
         {
-
+            
             nhanViencb.DataSource = dbNhanVien.LayNhanVien();
             nhanViencb.DisplayMember = "TenNV";
             nhanViencb.ValueMember = "TenNV";
@@ -199,15 +249,20 @@ namespace QuanLyRapPhim_Final.User_Controls
             render seatLoader = new render();
             if (globalRap != null)
             {
-                var demRap = dbRap.findrap(globalRap);
+                DataSet ds = dbRap.findRap(globalRap);
+                dtRap = ds.Tables[0];
 
-                if (demRap != 0)
+                if (dtRap.Rows.Count != 0)
                 {
-
-                    dbRap.findsodayghe(globalRap, ref Program.hangGhe);
-                    dbRap.findSoLuongGhe(globalRap, ref Program.soGhe);
+                    ds = dbRap.findSoDayGhe(globalRap);
+                    dtRap = ds.Tables[0];
+                    Program.hangGhe = Convert.ToInt32(dtRap.Rows[0].ItemArray[0].ToString());
+                    ds = dbRap.findSoLuongGhe(globalRap);
+                    dtRap = ds.Tables[0];
+                    Program.soGhe = Convert.ToInt32(dtRap.Rows[0].ItemArray[0].ToString());
                     seatLoader.removeSeat(ref seatPanel);
                     seatPanel.Refresh();
+                    //time = getHour();
                     getBookedSeat();
                     seatLoader.renderSeat(ref seatPanel, bookedSeatAlpha, bookedSeatNum);
                     setBtnEven(seatLoader.btns);
@@ -237,9 +292,11 @@ namespace QuanLyRapPhim_Final.User_Controls
                     return;
                 }
 
-
-                var dtPhim = dbPhim.LayPhim();
-                string maPhim = findMaPhim();
+                dtPhim = new DataTable();
+                dtPhim.Clear();
+                DataSet dsPhim = dbPhim.LayPhim();
+                dtPhim = dsPhim.Tables[0];
+                string maPhim = findMaPhim(dtPhim);
                 string maNV = findMaNV();
                 dbDatVe = new BLDatVe();
 
@@ -263,14 +320,16 @@ namespace QuanLyRapPhim_Final.User_Controls
         }
         private bool checkMaKH()
         {
+            dtDatVe = new DataTable();
+            dtDatVe.Clear();
+            DataSet ds = dbDatVe.LayThongTinVe();
+            dtDatVe = ds.Tables[0];
 
-            var dtDatVe = dbDatVe.LayThongTinVe().ToList();
-
-            for (int i = 0; i < dtDatVe.Count; i++)
+            for (int i = 0; i < dtDatVe.Rows.Count; i++)
             {
-                if (globalMaKH == dtDatVe[i].MaKH.ToString())
+                if (globalMaKH == dtDatVe.Rows[i].ItemArray[3].ToString())
                 {
-                    if (SuatChieucb.Text == dtDatVe[i].SuatChieu)
+                    if (SuatChieucb.Text == dtDatVe.Rows[i].ItemArray[1].ToString())
                     {
                         return false;
                     }
@@ -278,30 +337,33 @@ namespace QuanLyRapPhim_Final.User_Controls
             }
             return true;
         }
-        private string findMaPhim()
+        private string findMaPhim(DataTable dt)
         {
-            var dt = dbPhim.LayPhim().ToList();
             int i = 0;
-            while (i < dt.Count && comboBox2.Text != dt[i].TenPhim)
+            while (i < dt.Rows.Count && comboBox2.Text != dt.Rows[i].ItemArray[0].ToString())
             {
                 i++;
             }
-            return dt[i].MaPhim;
+            return dt.Rows[i].ItemArray[1].ToString();
         }
         private string findMaNV()
         {
-            var dtNhanVien = dbNhanVien.LayNhanVien().ToList();
+
+            dtNhanVien = new DataTable();
+            dtNhanVien.Clear();
+            DataSet ds = dbNhanVien.LayNhanVien();
+            dtNhanVien = ds.Tables[0];
             int i = 0;
-            while (i < dtNhanVien.Count && globalMaNV != (Convert.ToInt64(dtNhanVien[i].MaNV) - 1))
+            while (i < dtNhanVien.Rows.Count && globalMaNV != (Convert.ToInt64(dtNhanVien.Rows[i].ItemArray[2]) - 1))
             {
                 i++;
             }
-            return dtNhanVien[i].MaNV;
+            return dtNhanVien.Rows[i].ItemArray[2].ToString();
         }
         private void setMaKHcb()
         {
 
-            maKHcb.DataSource = dbKhachHang.LayKhachHang();
+            maKHcb.DataSource = dbKhachHang.LayKhachHang() ;
             maKHcb.DisplayMember = "MaKH";
             maKHcb.ValueMember = "MaKH";
             globalMaKH = maKHcb.Text;

@@ -17,50 +17,32 @@ namespace QuanLyRapPhim_Final.BSLayer
             return qlv.DatVes;
         }
 
-        public void findBookedSeat(string maRap, string tgChieu, ref List<string> bookedSeatAlpha, ref List<string> bookedSeatNum)
+        public DataSet findBookedSeat(string MaRap, string tgChieu)
         {
-            QuanLyRapPhimDataContext qlrp = new QuanLyRapPhimDataContext();
-            var query = (from i in qlrp.DatVes where i.MaRap == maRap && i.SuatChieu == tgChieu select new { i.Day, i.So }).ToList();
-            for (int i = 0; i < query.Count; i++)
-            {
-                bookedSeatAlpha.Add(query[i].Day);
-                bookedSeatNum.Add(query[i].So.ToString());
-            }
-        }
 
+            return db.ExecuteQueryDataSet($"select Day,So from DatVe where MaRap='{MaRap.Trim()}' and SuatChieu='{tgChieu.Trim()}'", CommandType.Text);
+
+            //return db.ExecuteQueryDataSet(
+            //    $"select Day,So from DatVe where MaRap=" +
+            //    $"'{MaRap.Trim()}'",CommandType.Text);
+
+        }
+        public DataSet findHour(string tgChieu)
+        {
+
+            return db.ExecuteQueryDataSet("select A.SuatChieu,B.TenPhim,B.MaPhim from DatVe as A inner join Phim as B on A.MaPhim = B.MaPhim", CommandType.Text);
+
+            //return db.ExecuteQueryDataSet(
+            //    "select A.SuatChieu,B.TenPhim from DatVe as A " +
+            //    "inner join Phim as B on A.MaPhim = B.MaPhim",
+            //    CommandType.Text);
+
+        }
         public bool themVe(string MaPhim, string Rap, string SuatChieu, string MaNV, string MaKH, string Day, string Ghe, ref string err)
         {
-            QuanLyRapPhimDataContext qlrp = new QuanLyRapPhimDataContext();
-            DatVe datVe = new DatVe();
-            datVe.MaPhim = MaPhim;
-            datVe.MaRap = Rap;
-            datVe.SuatChieu = SuatChieu;
-            datVe.MaNV = MaNV;
-            datVe.MaKH = MaKH;
-            datVe.Day = Day;
-            datVe.So = Convert.ToInt32(Ghe);
-            qlrp.DatVes.InsertOnSubmit(datVe);
-            qlrp.DatVes.Context.SubmitChanges();
-            return true;
-            //string sqlString = $"Insert Into DatVe values('{MaPhim.Trim()}','{SuatChieu.Trim()}','{MaNV.Trim()}','{MaKH.Trim()}','{Rap.Trim()}','{Day.Trim()}','{Ghe.Trim()}')";
-            //return db.MyExecuteNonQuery(sqlString, CommandType.Text, ref err);
-        }
-
-        public DataTable right()
-        {
-            DataTable dt = new DataTable();
-            dt.Clear();
-            QuanLyRapPhimDataContext qlrp = new QuanLyRapPhimDataContext();
-            var query = (from i in qlrp.DatVes join j in qlrp.Phims on i.MaPhim equals j.MaPhim select new { i.SuatChieu, j.TenPhim, j.MaPhim }).ToList();
-            for (int i = 0; i < query.Count; i++)
-            {
-                dt.Rows[i].ItemArray[0] = query[i].MaPhim;
-                dt.Rows[i].ItemArray[1] = query[i].SuatChieu;
-                dt.Rows[i].ItemArray[2] = query[i].TenPhim;
-            }
-
-            return dt;
+            string sqlString = $"Insert Into DatVe values('{MaPhim.Trim()}','{SuatChieu.Trim()}','{MaNV.Trim()}','{MaKH.Trim()}','{Rap.Trim()}','{Day.Trim()}','{Ghe.Trim()}')";
+            return db.MyExecuteNonQuery(sqlString, CommandType.Text, ref err);
         }
 
     }
-}
+    }

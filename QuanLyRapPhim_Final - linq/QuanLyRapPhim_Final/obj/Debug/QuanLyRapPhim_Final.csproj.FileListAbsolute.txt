@@ -69,26 +69,6 @@ F:\New folder\Windows\QuanLyRapPhim_Final - linq\QuanLyRapPhim_Final\obj\Debug\Q
 F:\New folder\Windows\QuanLyRapPhim_Final - linq\QuanLyRapPhim_Final\bin\Debug\QuanLyRapPhim_Final.exe.config
 F:\New folder\Windows\QuanLyRapPhim_Final - linq\QuanLyRapPhim_Final\bin\Debug\QuanLyRapPhim_Final.exe
 F:\New folder\Windows\QuanLyRapPhim_Final - linq\QuanLyRapPhim_Final\bin\Debug\QuanLyRapPhim_Final.pdb
-D:\đồ án cuối kì win\FinalWindows\QuanLyRapPhim_Final - linq\QuanLyRapPhim_Final\obj\Debug\QuanLyRapPhim_Final.Form1.resources
-D:\đồ án cuối kì win\FinalWindows\QuanLyRapPhim_Final - linq\QuanLyRapPhim_Final\obj\Debug\QuanLyRapPhim_Final.Properties.Resources.resources
-D:\đồ án cuối kì win\FinalWindows\QuanLyRapPhim_Final - linq\QuanLyRapPhim_Final\obj\Debug\QuanLyRapPhim_Final.User_Controls.ChucVuUC.resources
-D:\đồ án cuối kì win\FinalWindows\QuanLyRapPhim_Final - linq\QuanLyRapPhim_Final\obj\Debug\QuanLyRapPhim_Final.User_Controls.DatVeUC.resources
-D:\đồ án cuối kì win\FinalWindows\QuanLyRapPhim_Final - linq\QuanLyRapPhim_Final\obj\Debug\QuanLyRapPhim_Final.User_Controls.PhimUC.resources
-D:\đồ án cuối kì win\FinalWindows\QuanLyRapPhim_Final - linq\QuanLyRapPhim_Final\obj\Debug\QuanLyRapPhim_Final.User_Controls.QuanLyKhachHangUC.resources
-D:\đồ án cuối kì win\FinalWindows\QuanLyRapPhim_Final - linq\QuanLyRapPhim_Final\obj\Debug\QuanLyRapPhim_Final.User_Controls.QuanLyNhanVienUC.resources
-D:\đồ án cuối kì win\FinalWindows\QuanLyRapPhim_Final - linq\QuanLyRapPhim_Final\obj\Debug\QuanLyRapPhim_Final.User_Controls.QuanLyRapUC.resources
-D:\đồ án cuối kì win\FinalWindows\QuanLyRapPhim_Final - linq\QuanLyRapPhim_Final\obj\Debug\QuanLyRapPhim_Final.User_Controls.QuanLySuatChieuUC.resources
-D:\đồ án cuối kì win\FinalWindows\QuanLyRapPhim_Final - linq\QuanLyRapPhim_Final\obj\Debug\QuanLyRapPhim_Final.User_Controls.WelcomeUC.resources
-D:\đồ án cuối kì win\FinalWindows\QuanLyRapPhim_Final - linq\QuanLyRapPhim_Final\obj\Debug\QuanLyRapPhim_Final.csproj.GenerateResource.Cache
-D:\đồ án cuối kì win\FinalWindows\QuanLyRapPhim_Final - linq\QuanLyRapPhim_Final\obj\Debug\QuanLyRapPhim_Final.csproj.CoreCompileInputs.cache
-D:\đồ án cuối kì win\FinalWindows\QuanLyRapPhim_Final - linq\QuanLyRapPhim_Final\obj\Debug\QuanLyRapPhim_Final.exe
-D:\đồ án cuối kì win\FinalWindows\QuanLyRapPhim_Final - linq\QuanLyRapPhim_Final\obj\Debug\QuanLyRapPhim_Final.pdb
-D:\đồ án cuối kì win\FinalWindows\QuanLyRapPhim_Final - linq\QuanLyRapPhim_Final\bin\Debug\QuanLyRapPhim_Final.exe.config
-D:\đồ án cuối kì win\FinalWindows\QuanLyRapPhim_Final - linq\QuanLyRapPhim_Final\bin\Debug\QuanLyRapPhim_Final.exe
-D:\đồ án cuối kì win\FinalWindows\QuanLyRapPhim_Final - linq\QuanLyRapPhim_Final\bin\Debug\QuanLyRapPhim_Final.pdb
-F:\New folder\github\FinalWindows\FinalWindows\QuanLyRapPhim_Final - linq\QuanLyRapPhim_Final\bin\Debug\QuanLyRapPhim_Final.exe.config
-F:\New folder\github\FinalWindows\FinalWindows\QuanLyRapPhim_Final - linq\QuanLyRapPhim_Final\bin\Debug\QuanLyRapPhim_Final.exe
-F:\New folder\github\FinalWindows\FinalWindows\QuanLyRapPhim_Final - linq\QuanLyRapPhim_Final\bin\Debug\QuanLyRapPhim_Final.pdb
 F:\New folder\github\FinalWindows\FinalWindows\QuanLyRapPhim_Final - linq\QuanLyRapPhim_Final\obj\Debug\QuanLyRapPhim_Final.csprojAssemblyReference.cache
 F:\New folder\github\FinalWindows\FinalWindows\QuanLyRapPhim_Final - linq\QuanLyRapPhim_Final\obj\Debug\QuanLyRapPhim_Final.Form1.resources
 F:\New folder\github\FinalWindows\FinalWindows\QuanLyRapPhim_Final - linq\QuanLyRapPhim_Final\obj\Debug\QuanLyRapPhim_Final.Properties.Resources.resources
