@@ -77,23 +77,28 @@ namespace QuanLyRapPhim_Final.BSLayer
             }
             return true;
         }
-        //public DataSet findRap(string MaRap)
-        //{
-        //    return db.ExecuteQueryDataSet
-        //        ($"select MaRap from Rap where MaRap='" +
-        //        $"{MaRap.Trim()}'", CommandType.Text);
-        //}
-        //public DataSet findSoDayGhe(string MaRap)
-        //{
-        //    return db.ExecuteQueryDataSet
-        //        ($"select SoDayGhe from Rap where MaRap='" +
-        //        $"{MaRap.Trim()}'", CommandType.Text);
-        //}
-        //public DataSet findSoLuongGhe(string MaRap)
-        //{
-        //    return db.ExecuteQueryDataSet
-        //        ($"select SoLuongGhe from Rap where MaRap='" +
-        //        $"{MaRap.Trim()}'", CommandType.Text);
-        //}
+        public int findrap(string marap)
+        {
+            QuanLyRapPhimDataContext qlrp = new QuanLyRapPhimDataContext();
+            var temp = qlrp.Raps.Where(item => item.MaRap == marap).ToList();
+            return temp.Count;
+
+        }
+        public void findsodayghe(string marap, ref int dayGhe)
+        {
+            QuanLyRapPhimDataContext qlrp = new QuanLyRapPhimDataContext();
+            var temp = (from i in qlrp.Raps where i.MaRap == marap select i.SoDayGhe).ToList();
+            dayGhe = Convert.ToInt32(temp[0]);
+
+        }
+        public void findSoLuongGhe(string MaRap, ref int hangGhe)
+        {
+            QuanLyRapPhimDataContext qlrp = new QuanLyRapPhimDataContext();
+            var temp = (from i in qlrp.Raps where i.MaRap == MaRap select i.SoDayGhe).ToList();
+            hangGhe = Convert.ToInt32(temp[0]);
+
+
+        }
+
     }
 }
