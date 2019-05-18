@@ -186,7 +186,7 @@ namespace QuanLyRapPhim_Final.User_Controls
             if (cbbMaCV.ValueMember == "") return;
             using (QuanLyRapPhimDataContext db = new QuanLyRapPhimDataContext())
             {
-                txtChucVu.Text = dgv_NHANVIEN.SelectedCells[0].OwningRow.Cells["ChucVu"].Value.ToString();
+                txtChucVu.Text = dgv_NHANVIEN.Rows[cbbMaCV.SelectedIndex].ItemArray[1].ToString();
                 txtLuong.Text= dgv_NHANVIEN.SelectedCells[0].OwningRow.Cells["Luong"].Value.ToString();
             }
         }
