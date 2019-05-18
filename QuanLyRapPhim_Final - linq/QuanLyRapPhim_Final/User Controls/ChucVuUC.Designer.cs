@@ -36,6 +36,9 @@
             this.txtMaCV = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.dgv_CHUCVU = new System.Windows.Forms.DataGridView();
+            this.maCVDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.chucVuDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.luongDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.chucVuBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.quanLyRapPhimDataSet_CHUCVU = new QuanLyRapPhim_Final.QuanLyRapPhimDataSet_CHUCVU();
             this.chucVuTableAdapter = new QuanLyRapPhim_Final.QuanLyRapPhimDataSet_CHUCVUTableAdapters.ChucVuTableAdapter();
@@ -44,9 +47,6 @@
             this.btnDel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.maCVDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.chucVuDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.luongDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_CHUCVU)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chucVuBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.quanLyRapPhimDataSet_CHUCVU)).BeginInit();
@@ -117,6 +117,24 @@
             this.dgv_CHUCVU.TabIndex = 6;
             this.dgv_CHUCVU.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CHUCVU_CellClick);
             // 
+            // maCVDataGridViewTextBoxColumn
+            // 
+            this.maCVDataGridViewTextBoxColumn.DataPropertyName = "MaCV";
+            this.maCVDataGridViewTextBoxColumn.HeaderText = "MaCV";
+            this.maCVDataGridViewTextBoxColumn.Name = "maCVDataGridViewTextBoxColumn";
+            // 
+            // chucVuDataGridViewTextBoxColumn
+            // 
+            this.chucVuDataGridViewTextBoxColumn.DataPropertyName = "ChucVu";
+            this.chucVuDataGridViewTextBoxColumn.HeaderText = "ChucVu";
+            this.chucVuDataGridViewTextBoxColumn.Name = "chucVuDataGridViewTextBoxColumn";
+            // 
+            // luongDataGridViewTextBoxColumn
+            // 
+            this.luongDataGridViewTextBoxColumn.DataPropertyName = "Luong";
+            this.luongDataGridViewTextBoxColumn.HeaderText = "Luong";
+            this.luongDataGridViewTextBoxColumn.Name = "luongDataGridViewTextBoxColumn";
+            // 
             // chucVuBindingSource
             // 
             this.chucVuBindingSource.DataMember = "ChucVu";
@@ -186,24 +204,6 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // maCVDataGridViewTextBoxColumn
-            // 
-            this.maCVDataGridViewTextBoxColumn.DataPropertyName = "MaCV";
-            this.maCVDataGridViewTextBoxColumn.HeaderText = "MaCV";
-            this.maCVDataGridViewTextBoxColumn.Name = "maCVDataGridViewTextBoxColumn";
-            // 
-            // chucVuDataGridViewTextBoxColumn
-            // 
-            this.chucVuDataGridViewTextBoxColumn.DataPropertyName = "ChucVu1";
-            this.chucVuDataGridViewTextBoxColumn.HeaderText = "ChucVu";
-            this.chucVuDataGridViewTextBoxColumn.Name = "chucVuDataGridViewTextBoxColumn";
-            // 
-            // luongDataGridViewTextBoxColumn
-            // 
-            this.luongDataGridViewTextBoxColumn.DataPropertyName = "Luong";
-            this.luongDataGridViewTextBoxColumn.HeaderText = "Luong";
-            this.luongDataGridViewTextBoxColumn.Name = "luongDataGridViewTextBoxColumn";
-            // 
             // ChucVuUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
@@ -242,6 +242,9 @@
         private System.Windows.Forms.TextBox txtMaCV;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView dgv_CHUCVU;
+        private System.Windows.Forms.DataGridViewTextBoxColumn maCVDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn chucVuDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn luongDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource chucVuBindingSource;
         private QuanLyRapPhimDataSet_CHUCVU quanLyRapPhimDataSet_CHUCVU;
         private QuanLyRapPhimDataSet_CHUCVUTableAdapters.ChucVuTableAdapter chucVuTableAdapter;
@@ -250,8 +253,5 @@
         private System.Windows.Forms.Button btnDel;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.DataGridViewTextBoxColumn maCVDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn chucVuDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn luongDataGridViewTextBoxColumn;
     }
 }
