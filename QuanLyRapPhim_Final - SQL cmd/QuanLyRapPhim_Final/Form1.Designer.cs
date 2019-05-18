@@ -267,7 +267,9 @@
             // 
             // datVeUC1
             // 
+            this.datVeUC1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold);
             this.datVeUC1.Location = new System.Drawing.Point(1, 116);
+            this.datVeUC1.Margin = new System.Windows.Forms.Padding(4);
             this.datVeUC1.Name = "datVeUC1";
             this.datVeUC1.Size = new System.Drawing.Size(896, 613);
             this.datVeUC1.TabIndex = 4;
@@ -329,6 +331,7 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panelHeader.ResumeLayout(false);
