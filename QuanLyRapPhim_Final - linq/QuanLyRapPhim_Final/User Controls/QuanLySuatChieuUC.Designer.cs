@@ -175,6 +175,7 @@
             this.dgv_SUATCHIEU.RowTemplate.Height = 24;
             this.dgv_SUATCHIEU.Size = new System.Drawing.Size(344, 150);
             this.dgv_SUATCHIEU.TabIndex = 4;
+            this.dgv_SUATCHIEU.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_SUATCHIEU_CellClick);
             // 
             // maPhimDataGridViewTextBoxColumn
             // 

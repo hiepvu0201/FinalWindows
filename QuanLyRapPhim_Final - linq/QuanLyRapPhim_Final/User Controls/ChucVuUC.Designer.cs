@@ -104,6 +104,7 @@
             // dgv_CHUCVU
             // 
             this.dgv_CHUCVU.AutoGenerateColumns = false;
+            this.dgv_CHUCVU.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv_CHUCVU.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_CHUCVU.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.maCVDataGridViewTextBoxColumn,
