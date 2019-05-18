@@ -164,6 +164,7 @@
             // dgv_SUATCHIEU
             // 
             this.dgv_SUATCHIEU.AutoGenerateColumns = false;
+            this.dgv_SUATCHIEU.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv_SUATCHIEU.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_SUATCHIEU.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.maPhimDataGridViewTextBoxColumn,
@@ -173,7 +174,7 @@
             this.dgv_SUATCHIEU.Location = new System.Drawing.Point(71, 338);
             this.dgv_SUATCHIEU.Name = "dgv_SUATCHIEU";
             this.dgv_SUATCHIEU.RowTemplate.Height = 24;
-            this.dgv_SUATCHIEU.Size = new System.Drawing.Size(344, 150);
+            this.dgv_SUATCHIEU.Size = new System.Drawing.Size(353, 163);
             this.dgv_SUATCHIEU.TabIndex = 4;
             this.dgv_SUATCHIEU.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_SUATCHIEU_CellClick);
             // 
