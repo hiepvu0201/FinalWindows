@@ -23,7 +23,6 @@ namespace QuanLyRapPhim_Final.BSLayer
         {
             try
             {
-
                 QuanLyRapPhimDataContext qlP = new QuanLyRapPhimDataContext();
                 Phim p = new Phim();
                 p.TenPhim =TenPhim;
@@ -33,13 +32,12 @@ namespace QuanLyRapPhim_Final.BSLayer
 
                 qlP.Phims.InsertOnSubmit(p);
                 qlP.Phims.Context.SubmitChanges();
-
             }
             catch (SqlException)
             {
                 MessageBox.Show("Không thêm được. Lỗi rồi!");
             }
-            return false;
+            return true;
         }
         public bool XoaPhim(ref string err, string MaPhim)
         {
@@ -57,7 +55,7 @@ namespace QuanLyRapPhim_Final.BSLayer
             {
                 MessageBox.Show("Không xóa được. Lỗi rồi!!!");
             }
-            return false;
+            return true;
         }
         public bool CapNhatPhim(string MaPhim, string TenPhim,int GiaVe,MemoryStream Poster, ref string err)
         {
